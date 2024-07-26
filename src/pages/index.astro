@@ -1,0 +1,12 @@
+---
+import Categories from "@components/Categories.astro";
+import Category from "@components/Category.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Receta Fácil | Libro de cocina">
+  <main>
+    <h1>Recetas de cocina</h1>
+    <Categories client:load/>
+  </main>
+</Layout>
