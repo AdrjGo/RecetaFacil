@@ -15,6 +15,6 @@ const url = await fetch(
 const data = await url.json();
 ---
 
-<div class="flex gap-3 justify-evenly flex-wrap px-8">
+<div class="flex gap-3 justify-evenly flex-wrap px-8 min-[1812px]:px-72">
   {data.map((category) => <Category category={category} />)}
 </div>

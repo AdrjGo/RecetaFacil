@@ -32,13 +32,18 @@ const CATEGORIESICONS = [
 ];
 ---
 
-<div class="bg-white p-4 rounded-lg w-36 grid content-between">
-  {
-    CATEGORIESICONS.map((presentation) => (
-      <>
-        <h2 class="font-medium">{presentation.titleCat}</h2>
-        <img src={presentation.icon} alt={presentation.titleCat} class="my-2" />
-      </>
-    ))
-  }
-</div>
+<a href="#" class="rounded-2xl bg-white hover:scale-105 shadow-xl">
+  <div class="p-4 w-36 grid content-between h-full">
+    {
+      CATEGORIESICONS.map((presentation) => (
+        <>
+          <h2 class="font-medium text-center">{presentation.titleCat}</h2>
+          <img
+            src={presentation.icon}
+            alt={presentation.titleCat}
+          />
+        </>
+      ))
+    }
+  </div>
+</a>
