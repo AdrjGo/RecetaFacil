@@ -1,8 +1,44 @@
 ---
 const { category } = Astro.props;
-const { title,path } = category;
+const { title, path } = category;
+
+const categoryIcons = {
+  Pasabocas: "/public/icons/aperitivo.svg",
+  Arroces: "/public/icons/arroz.svg",
+  "Carnes Blancas": "/public/icons/pollo.svg",
+  "Carnes Rojas y Rosadas": "/public/icons/carne.svg",
+  Ensaladas: "/public/icons/ensalada.svg",
+  "Guisos y Estofados": "/public/icons/guiso.svg",
+  Desayunos: "/public/icons/desayuno.svg",
+  Legumbres: "/public/icons/legumbres.svg",
+  Mariscos: "/public/icons/mariscos.svg",
+  Panaderia: "/public/icons/pan.svg",
+  Pastas: "/public/icons/pastas.svg",
+  Pescados: "/public/icons/pescado.svg",
+  Postres: "/public/icons/postres.svg",
+  Salsas: "/public/icons/salsas.svg",
+  "Sopas y cremas": "/public/icons/sopa.svg",
+  Vegetales: "/public/icons/vegetales.svg",
+};
+
+const icon = categoryIcons[title] || "/public/icons/mandil.svg"; // Ícono por defecto si no se encuentra la categoría
+
+const CATEGORIESICONS = [
+  {
+    titleCat: title,
+    icon: icon,
+    name: path,
+  },
+];
 ---
-<div class="bg-red-500">
-    <h2>{title}</h2>
-    <p>{path}</p>
+
+<div class="bg-white p-4 rounded-lg w-36 grid content-between">
+  {
+    CATEGORIESICONS.map((presentation) => (
+      <>
+        <h2 class="font-medium">{presentation.titleCat}</h2>
+        <img src={presentation.icon} alt={presentation.titleCat} class="my-2" />
+      </>
+    ))
+  }
 </div>
