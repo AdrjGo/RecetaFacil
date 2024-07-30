@@ -1,10 +1,11 @@
 ---
-import Category from "./Category.astro";
+import Category from "@components/Category.astro";
+
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "2bb8e7996bmshe414886ace39900p126ac3jsnff9f1437217b",
-    "x-rapidapi-host": "recipe-book2.p.rapidapi.com",
+    "x-rapidapi-key": import.meta.env.SECRET_RECIPE_BOOK_API,
+    "x-rapidapi-host": import.meta.env.PUBLIC_HOST,
   },
 };
 const url = await fetch(
