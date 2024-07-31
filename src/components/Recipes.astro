@@ -1,0 +1,11 @@
+---
+import CardRecipe from "./RecipeCard.astro";
+import { getRecipeNew } from "@scripts/getRecipeNew";
+const data = await getRecipeNew();
+---
+
+<section
+  class="px-8 min-[1812px]:px-72 my-16 flex flex-wrap gap-y-4 gap-x-8 justify-center"
+>
+  {data.map((recipe) => <CardRecipe recipe={recipe} />)}
+</section>

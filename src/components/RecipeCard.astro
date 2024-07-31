@@ -1,0 +1,54 @@
+---
+import { getCategoryIcon } from "@scripts/getCategoryIcon";
+import ButtonRecipe from "./ButtonRecipe.astro";
+import { Image } from "astro:assets";
+
+const { recipe } = Astro.props;
+const { image, title, newCategory, path } = recipe;
+
+const icon = getCategoryIcon(newCategory);
+
+const RECIPEICONS = [
+  {
+    category: newCategory, 
+    icon: icon,
+  },
+];
+---
+
+<a href={`/receta/${path}`}>
+  <article
+    class="w-56 h-72 bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col"
+  >
+    <Image
+      width="1600"
+      height="900"
+      decoding="async"
+      loading="lazy"
+      src={image}
+      alt={title}
+      class="object-cover"
+    />
+    <div class="p-4 flex flex-col flex-grow">
+      <h2 class="text-lg font-semibold line-clamp-2 h-14">{title}</h2>
+
+      {
+        RECIPEICONS.map((recipe) => (
+          <div class="flex items-center gap-2 justify-center py-3">
+            <h3 class="text-xs">{recipe.category}</h3>
+            <Image
+              width="160"
+              height="90"
+              decoding="async"
+              loading="lazy"
+              src={recipe.icon}
+              alt={title}
+              class="size-6"
+            />
+          </div>
+        ))
+      }
+      <ButtonRecipe />
+    </div>
+  </article>
+</a>
