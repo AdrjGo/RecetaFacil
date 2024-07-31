@@ -1,20 +1,9 @@
 ---
 import Category from "@components/Category.astro";
-
-const options = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": import.meta.env.SECRET_RECIPE_BOOK_API,
-    "x-rapidapi-host": import.meta.env.PUBLIC_HOST,
-  },
-};
-const url = await fetch(
-  "https://recipe-book2.p.rapidapi.com/categories",
-  options
-);
-const data = await url.json();
+import { getCategories } from "@scripts/getCategories";
+const data = await getCategories();
 ---
 
-<div class="flex gap-3 justify-evenly flex-wrap px-8 min-[1812px]:px-72">
+<section class="flex gap-3 justify-evenly flex-wrap px-8 min-[1812px]:px-72">
   {data.map((category) => <Category category={category} />)}
-</div>
+</section>

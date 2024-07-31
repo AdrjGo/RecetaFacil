@@ -7,6 +7,7 @@
       "@assets/*": ["src/assets/*"],
       "@layouts/*": ["src/layouts/*"],
       "@icons/*": ["src/icons/*"],
+      "@scripts/*": ["src/scripts/*"],
 
     }
   }

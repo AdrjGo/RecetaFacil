@@ -2,17 +2,22 @@
 import Categories from "@components/Categories.astro";
 import Layout from "@layouts/Layout.astro";
 import "@fontsource-variable/onest";
+import Recipes from "@components/Recipes.astro";
 ---
 
 <Layout title="Receta Fácil | Libro de cocina">
   <main class="grid place-content-center">
-    <h1 class="uppercase text-center text-3xl font-bold py-5">Recetas de cocina</h1>
+    <h1 class="uppercase text-center text-3xl font-bold py-5">
+      Recetas de cocina
+    </h1>
     <Categories />
+    <Recipes />
   </main>
 </Layout>
 
 <style>
-  main{
+  main {
     margin: 0 auto;
   }
+
 </style>
