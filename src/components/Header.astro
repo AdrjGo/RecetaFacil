@@ -3,7 +3,10 @@ import Logo from "@icons/Logo.astro";
 ---
 
 <header class="bg-green-500 top-0">
-  <div class="p-2 px-4">
-    <Logo />
+  <div class="p-2 px-8 min-[1812px]:px-72">
+    <a href={import.meta.env.BASE_URL}>
+      <Logo />
+      <h1 class="hidden">Receta Fácil | Recetas de cocina gratis | Libro de cocina</h1>
+    </a>
   </div>
 </header>
