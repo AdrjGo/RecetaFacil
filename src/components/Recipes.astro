@@ -1,7 +1,7 @@
 ---
 import CardRecipe from "./RecipeCard.astro";
-import { getRecipeNew } from "@scripts/getRecipeNew";
-const data = await getRecipeNew();
+import { getNewRecipe } from "@scripts/getNewRecipe";
+const data = await getNewRecipe();
 ---
 
 <section

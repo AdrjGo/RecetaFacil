@@ -1,0 +1,61 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getRecipeBySlug } from "@scripts/getRecipeBySlug";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": import.meta.env.SECRET_RECIPE_BOOK_API,
+      "x-rapidapi-host": import.meta.env.PUBLIC_HOST,
+    },
+  };
+
+  const url = await fetch(
+    "https://recipe-book2.p.rapidapi.com/recipes-new",
+    options
+  );
+  const data = await url.json();
+
+  return data.map((recipe) => ({
+    params: { slug: recipe.path },
+  }));
+}
+
+const { slug } = Astro.params;
+const data = await getRecipeBySlug(slug);
+
+const {
+  "Imagen de la receta": imgReceta,
+  "Titulo de la preparacion": nombreReceta,
+  Raciones,
+  Duracion,
+  Ingredientes,
+  "Pasos de preparacion": pasos,
+} = data;
+---
+
+<Layout title={nombreReceta + " | Receta Fácil"}>
+  <section
+    class="grid grid-cols-2 gap-6 m-8 p-8 bg-white rounded-2xl shadow-xl"
+  >
+    <picture class="w-full">
+      <Image
+        width="1600"
+        height="900"
+        decoding="async"
+        loading="lazy"
+        src={imgReceta}
+        alt={nombreReceta}
+        class="w-full"
+      />
+    </picture>
+    <article>
+      <h1 class="text-5xl font-extrabold text-slate-950">{nombreReceta}</h1>
+      <h2>{Raciones}</h2>
+      <h3>Duración: {Duracion}</h3>
+      <ul><li>{Ingredientes}</li></ul>
+    </article>
+  </section>
+</Layout>
